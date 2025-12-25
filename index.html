@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>नया साल 2026 की हार्दिक शुभकामनाएँ</title>
+    <meta name="description" content="2026 की सबसे खूबसूरत और भावनात्मक शुभकामनाएँ - यहाँ क्लिक करें और अपना नाम लिखें">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            --royal-bg: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            --glass: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+        body {
+            font-family: 'Mukta', sans-serif;
+            background: var(--royal-bg);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            text-align: center;
+        }
+
+        /* Particles Background */
+        #canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Music Toggle */
+        #music-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            background: var(--glass);
+            border: 1px solid rgba(255,215,0,0.3);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Hero Section */
+        .hero-heading {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 40px;
+            color: #ffd700;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .main-title {
+            font-size: 2.8rem;
+            margin: 10px 0;
+            background: var(--gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+            animation: zoomIn 1.5s ease;
+        }
+
+        /* Shayari Card */
+        .wish-card {
+            background: var(--glass);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            padding: 30px 20px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            margin: 25px 0;
+            position: relative;
+            width: 100%;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            animation: slideUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .sender-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .sender-name span {
+            background: var(--gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding: 0 5px;
+        }
+
+        .shayari-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            font-style: italic;
+            color: #f0f0f0;
+            white-space: pre-line;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Countdown */
+        .timer-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+            width: 100%;
+        }
+
+        .timer-box {
+            background: rgba(0,0,0,0.3);
+            padding: 10px;
+            border-radius: 10px;
+            border-bottom: 2px solid #ffd700;
+        }
+
+        .timer-box div:first-child { font-size: 1.5rem; font-weight: bold; color: #ffd700; }
+        .timer-box div:last-child { font-size: 0.7rem; text-transform: uppercase; opacity: 0.8; }
+
+        /* Input Section */
+        .creation-zone {
+            width: 100%;
+            margin-top: auto;
+            padding: 20px 0;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 50px;
+            border: 2px solid rgba(255,215,0,0.5);
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+            font-size: 1.1rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input[type="text"]:focus {
+            background: rgba(255,255,255,0.1);
+            border-color: #ffd700;
+            box-shadow: 0 0 15px rgba(255,215,0,0.2);
+        }
+
+        .btn-create {
+            width: 100%;
+            padding: 15px;
+            border-radius: 50px;
+            border: none;
+            background: var(--gold);
+            color: #000;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.2s;
+            box-shadow: 0 5px 15px rgba(187, 149, 63, 0.4);
+        }
+
+        .btn-create:active { transform: scale(0.96); }
+
+        .btn-whatsapp {
+            background: #25d366 !important;
+            color: white !important;
+            margin-top: 10px;
+            display: none;
+        }
+
+        /* Animations */
+        @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes zoomIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+        
+        .pulse { animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+
+        .floating-icons { position: absolute; font-size: 2rem; opacity: 0.5; z-index: -1; }
+
+        footer { font-size: 0.8rem; opacity: 0.6; margin-top: 20px; padding-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas"></canvas>
+
+    <div id="music-toggle" onclick="toggleMusic()">
+        <span id="music-icon">🔇</span>
+    </div>
+
+    <div class="container">
+        <p class="hero-heading">✨ नया साल 2026 ✨</p>
+        <h1 class="main-title">हार्दिक शुभकामनाएँ</h1>
+
+        <div class="wish-card" id="wishCard">
+            <span class="sender-name" id="senderDisplay">👑 यह संदेश आपके लिए भेजा गया है</span>
+            
+            <div class="shayari-text" id="shayariText">
+                लोड हो रहा है...
+            </div>
+
+            <div class="timer-container">
+                <div class="timer-box"><div id="days">00</div><div>दिन</div></div>
+                <div class="timer-box"><div id="hours">00</div><div>घंटे</div></div>
+                <div class="timer-box"><div id="minutes">00</div><div>मिनट</div></div>
+                <div class="timer-box"><div id="seconds">00</div><div>सेकंड</div></div>
+            </div>
+            <p style="font-size: 0.9rem; color: #ffd700; margin-top: 10px;">1 जनवरी 2026 तक</p>
+        </div>
+
+        <div class="creation-zone">
+            <div id="inputSection">
+                <div class="input-group">
+                    <input type="text" id="userName" placeholder="यहाँ अपना नाम लिखें..." maxlength="25">
+                </div>
+                <button class="btn-create pulse" onclick="createWish()">
+                    👉 अपना शुभकामना संदेश बनाएँ
+                </button>
+            </div>
+
+            <button id="whatsappBtn" class="btn-create btn-whatsapp" onclick="shareWhatsApp()">
+                <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.319 1.592 5.548 0 10.064-4.516 10.066-10.064.001-2.686-1.047-5.212-2.952-7.115s-4.432-2.956-7.119-2.956c-5.548 0-10.066 4.516-10.067 10.065 0 2.13.639 3.702 1.748 5.61l-.999 3.644 3.74-.981-.235-.146zm11.412-8.026c-.3-.149-1.774-.875-2.048-.975-.275-.1-.475-.149-.675.15-.2.299-.775.975-.95 1.174-.175.2-.35.224-.65.075-.3-.149-1.265-.467-2.41-1.488-.891-.794-1.492-1.775-1.667-2.074-.175-.299-.019-.461.13-.61.135-.133.3-.349.45-.523.15-.174.2-.299.3-.499.1-.199.05-.374-.025-.524-.075-.149-.675-1.625-.925-2.224-.244-.583-.491-.503-.675-.512-.175-.008-.375-.01-.575-.01s-.525.075-.8.374c-.275.299-1.05 1.024-1.05 2.498 0 1.474 1.075 2.897 1.225 3.097.15.199 2.116 3.23 5.125 4.53 1.05.454 1.701.608 2.246.782.723.23 1.381.197 1.901.12.579-.086 1.774-.725 2.024-1.424.25-.699.25-1.299.175-1.424-.075-.125-.275-.199-.575-.349z"/></svg>
+                WhatsApp पर सबको भेजें
+            </button>
+        </div>
+
+        <footer>© 2026 नया साल उत्सव | मंगलमय हो</footer>
+    </div>
+
+    <!-- Audio (BGM - Subtle Instrumental) -->
+    <audio id="bgm" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-17.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // --- Shayari Database ---
+        const shayaris = [
+            "✨ नए साल की इस पावन सुबह में\nखुशियों का उजाला आपके द्वार आए,\nहर सपना पूरा हो, हर ग़म दूर जाए,\nआपको और आपके पूरे परिवार को\nनया साल 2026 मंगलमय हो। 🎆",
+            "पुष्प खिले गुलशन में खुशबू आपके पास हो,\n2026 के हर दिन में खुशियों का एहसास हो,\nसफलता चूमती रहे आपके कदम हमेशा,\nजीवन में आपके बस सुख-शांति का वास हो। 🎊",
+            "बीते कल को भूल जाएं, आगे की सुध लें,\nनई उम्मीदों के साथ 2026 का दामन थाम लें,\nहर दुआ कबूल हो आपकी रब के दरबार में,\nमिले वो सब आपको जिसे आप दिल से चाहें। 🙏",
+            "रिश्तों में मिठास रहे, अपनों का साथ रहे,\nनए साल में हर पल ईश्वर का हाथ रहे,\nधन, स्वास्थ्य और वैभव से भरा हो आँगन,\nमुस्कुराहटों के साथ बीते आपका हर क्षण। ✨"
+        ];
+
+        // --- Core Functions ---
+        function getParam(name) {
+            return new URLSearchParams(window.location.search).get(name);
+        }
+
+        const senderName = getParam('n');
+        if (senderName) {
+            document.getElementById('senderDisplay').innerHTML = `👑 <span>${decodeURIComponent(senderName)}</span> ने आपके लिए भेजा है`;
+            document.getElementById('shayariText').innerText = shayaris[Math.floor(Math.random() * shayaris.length)];
+            
+            // Trigger effects for recipient
+            setTimeout(() => {
+                createConfetti();
+                if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
+            }, 500);
+        } else {
+            document.getElementById('shayariText').innerText = "✨ आने वाला साल आपके और आपके परिवार के लिए सुख, शांति और समृद्धि लेकर आए। ✨";
+        }
+
+        function createWish() {
+            const name = document.getElementById('userName').value.trim();
+            if (!name) {
+                alert("कृपया अपना नाम लिखें!");
+                return;
+            }
+            const currentUrl = window.location.origin + window.location.pathname;
+            const finalLink = `${currentUrl}?n=${encodeURIComponent(name)}`;
+            
+            document.getElementById('inputSection').style.display = 'none';
+            const waBtn = document.getElementById('whatsappBtn');
+            waBtn.style.display = 'flex';
+            waBtn.setAttribute('data-link', finalLink);
+            waBtn.setAttribute('data-name', name);
+            
+            // Auto update display to show preview
+            document.getElementById('senderDisplay').innerHTML = `👑 <span>${name}</span> का संदेश`;
+            createConfetti();
+        }
+
+        function shareWhatsApp() {
+            const link = document.getElementById('whatsappBtn').getAttribute('data-link');
+            const name = document.getElementById('whatsappBtn').getAttribute('data-name');
+            const msg = `*${name}* ने आपके लिए एक खास सरप्राइज भेजा है 🎁\nजल्दी यहाँ क्लिक करके देखें 👇\n\n${link}`;
+            window.location.href = `whatsapp://send?text=${encodeURIComponent(msg)}`;
+        }
+
+        // --- Countdown Logic ---
+        function updateTimer() {
+            const target = new Date("Jan 1, 2026 00:00:00").getTime();
+            const now = new Date().getTime();
+            const diff = target - now;
+
+            if (diff > 0) {
+                document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+                document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                document.getElementById('minutes').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                document.getElementById('seconds').innerText = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
+            }
+        }
+        setInterval(updateTimer, 1000);
+
+        // --- Particle & Confetti System ---
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.onresize = resize;
+        resize();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+                this.color = `rgba(255, 215, 0, ${Math.random() * 0.5})`;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.y > canvas.height) this.y = 0;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 50; i++) particles.push(new Particle());
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        function createConfetti() {
+            const colors = ['#ffd700', '#ffffff', '#ff00ff', '#00ffff'];
+            for(let i=0; i<100; i++) {
+                setTimeout(() => {
+                    const div = document.createElement('div');
+                    div.style.position = 'fixed';
+                    div.style.left = Math.random() * 100 + 'vw';
+                    div.style.top = '-10px';
+                    div.style.width = '8px';
+                    div.style.height = '8px';
+                    div.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    div.style.borderRadius = '50%';
+                    div.style.zIndex = '999';
+                    div.style.transition = 'transform 3s linear, opacity 3s';
+                    document.body.appendChild(div);
+                    
+                    setTimeout(() => {
+                        div.style.transform = `translate(${Math.random()*100 - 50}px, 100vh) rotate(720deg)`;
+                        div.style.opacity = '0';
+                    }, 10);
+                    
+                    setTimeout(() => div.remove(), 3000);
+                }, i * 20);
+            }
+        }
+
+        // --- Music Logic ---
+        let isPlaying = false;
+        function toggleMusic() {
+            const audio = document.getElementById('bgm');
+            const icon = document.getElementById('music-icon');
+            if (isPlaying) {
+                audio.pause();
+                icon.innerText = "🔇";
+            } else {
+                audio.play().catch(() => alert("कृपया संगीत के लिए स्क्रीन पर कहीं भी क्लिक करें"));
+                icon.innerText = "🎵";
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // Initialize display
+        updateTimer();
+    </script>
+</body>
+</html>
