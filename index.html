@@ -8,6 +8,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9787168048682376"
+     crossorigin="anonymous"></script>
+
     <style>
         :root {
             --gold: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
@@ -36,23 +41,6 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-        }
-
-        #music-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 100;
-            background: var(--glass);
-            border: 1px solid rgba(255,215,0,0.3);
-            border-radius: 50%;
-            width: 45px;
-            height: 45px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            backdrop-filter: blur(5px);
         }
 
         .hero-heading {
@@ -186,32 +174,23 @@
         .pulse { animation: pulse 2s infinite; }
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
 
-        .floating-icons { position: absolute; font-size: 2rem; opacity: 0.5; z-index: -1; }
-
         footer { font-size: 0.8rem; opacity: 0.6; margin-top: 20px; padding-bottom: 10px; }
     </style>
 </head>
 <body>
 
-    <!-- Adstera Banner -->
+    <!-- Google AdSense Banner -->
     <div style="text-align:center; margin:20px 0;">
-      <script>
-        atOptions = {
-          'key' : '9a39907e581d4cdae90aa860b8502505',
-          'format' : 'iframe',
-          'height' : 90,
-          'width' : 728,
-          'params' : {}
-        };
-      </script>
-      <script src="https://www.highperformanceformat.com/9a39907e581d4cdae90aa860b8502505/invoke.js"></script>
+        <ins class="adsbygoogle"
+            style="display:inline-block;width:728px;height:90px"
+            data-ad-client="ca-pub-9787168048682376"
+            data-ad-slot="1234567890"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
     </div>
 
     <canvas id="canvas"></canvas>
-
-    <div id="music-toggle" onclick="toggleMusic()">
-        <span id="music-icon">🔇</span>
-    </div>
 
     <div class="container">
         <p class="hero-heading">✨ नया साल 2026 ✨</p>
@@ -251,7 +230,8 @@
         <footer>© 2026 नया साल उत्सव | मंगलमय हो</footer>
     </div>
 
-    <audio id="bgm" loop>
+    <!-- Auto Play Background Music -->
+    <audio id="bgm" autoplay loop>
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-17.mp3" type="audio/mpeg">
     </audio>
 
@@ -328,7 +308,7 @@
         function createConfetti(){
             const colors=['#ffd700','#ffffff','#ff00ff','#00ffff'];
             for(let i=0;i<100;i++){
-                setTimeout(()=>{
+                setTimeout(()=>{ 
                     const div=document.createElement('div');
                     div.style.position='fixed';
                     div.style.left=Math.random()*100+'vw';
@@ -344,14 +324,6 @@
                     setTimeout(()=>div.remove(),3000);
                 },i*20);
             }
-        }
-
-        let isPlaying=false;
-        function toggleMusic(){
-            const audio=document.getElementById('bgm');
-            const icon=document.getElementById('music-icon');
-            if(isPlaying){audio.pause(); icon.innerText="🔇";} else { audio.play().catch(()=>alert("कृपया संगीत के लिए स्क्रीन पर कहीं भी क्लिक करें")); icon.innerText="🎵"; }
-            isPlaying=!isPlaying;
         }
 
         updateTimer();
